@@ -31,6 +31,7 @@
 #include "avp_menugfx.hpp"
 #include "avp_intro.h"
 #include "fmv.h"
+#include "bink.h"
 
 /* used to get file time */
 #include <sys/types.h>
@@ -38,11 +39,6 @@
 
 int SelectDirectDrawObject(void *pGUID);
                     
-extern void StartMenuBackgroundBink(void);
-extern int PlayMenuBackgroundBink(void);
-extern void EndMenuBackgroundBink(void);
-
-
 /* KJL 11:22:37 23/06/98 - Hopefully these will be the final menus! */
 
 extern int IDemandSelect(void);
@@ -388,7 +384,7 @@ void HandlePostGameFMVs(void)
 				ClearScreenToBlack();
 				FlipBuffers();
 				ClearScreenToBlack();
-				PlayBinkedFMV("FMVs/marineoutro.bik");
+				PlayBinkedFMV("FMVs/MarineOutro.bik");
 			}
 			break;
 		}
@@ -399,7 +395,7 @@ void HandlePostGameFMVs(void)
 				ClearScreenToBlack();
 				FlipBuffers();
 				ClearScreenToBlack();
-				PlayBinkedFMV("FMVs/alienoutro.bik");
+				PlayBinkedFMV("FMVs/AlienOutro.bik");
 			}
 			break;
 		}
@@ -410,7 +406,7 @@ void HandlePostGameFMVs(void)
 				ClearScreenToBlack();
 				FlipBuffers();
 				ClearScreenToBlack();
-				PlayBinkedFMV("FMVs/predatoroutro.bik");
+				PlayBinkedFMV("FMVs/PredatorOutro.bik");
 			}
 			break;
 		}
@@ -426,21 +422,21 @@ void HandlePreGameFMVs(void)
 			ClearScreenToBlack();
 			FlipBuffers();
 			ClearScreenToBlack();
-			PlayBinkedFMV("FMVs/marineintro.bik");
+			PlayBinkedFMV("FMVs/MarineIntro.bik");
 		}
 		else if (!stricmp("temple", LevelName))
 		{
 			ClearScreenToBlack();
 			FlipBuffers();
 			ClearScreenToBlack();
-			PlayBinkedFMV("FMVs/alienintro.bik");
+			PlayBinkedFMV("FMVs/AlienIntro.bik");
 		}
 		else if (!stricmp("fall", LevelName))
 		{
 			ClearScreenToBlack();
 			FlipBuffers();
 			ClearScreenToBlack();
-			PlayBinkedFMV("FMVs/predatorintro.bik");
+			PlayBinkedFMV("FMVs/PredatorOutro.bik");
 		}
 	}
 }
@@ -4768,31 +4764,6 @@ extern void DrawMainMenusBackdrop(void)
 	{
 		DrawAvPMenuGfx(AVPMENUGFX_BACKDROP,0,0,ONE_FIXED+1,AVPMENUFORMAT_LEFTJUSTIFIED);
 	}
-	else
-	{
-		extern unsigned char *ScreenBuffer;
-		unsigned int *screenPtr = (unsigned int*)ScreenBuffer;
-		int i;	  
-
-		i = ScreenDescriptorBlock.SDB_Width * 60 /2;
-		do
-		{
-			*screenPtr++=0; 
-		}
-		while(--i);
-
-		screenPtr+=ScreenDescriptorBlock.SDB_Width * 360/2;
-
-		i = ScreenDescriptorBlock.SDB_Width * 60 /2;
-		do
-		{
-			*screenPtr++=0; 
-		}
-		while(--i);
-	}
-
-
-
 	#else
 	extern DDPIXELFORMAT DisplayPixelFormat;
 	extern unsigned char *ScreenBuffer;

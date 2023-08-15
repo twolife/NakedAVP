@@ -98,6 +98,13 @@ static char *FixFilename(const char *filename, const char *prefix, int force)
 	return f;
 }
 
+
+char *getFullPath(const char *filename)
+{
+	return FixFilename(filename, global_dir, 0);
+}
+
+
 /*
 Open a file of type type, with mode mode.
 

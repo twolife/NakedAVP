@@ -1465,6 +1465,7 @@ static const struct option getopt_long_options[] = {
 { "nosound",	0,	NULL,	's' },
 { "nocdrom",	0,	NULL,	'c' },
 { "nojoy",	0,	NULL,	'j' },
+{ "intro",	0,	NULL,	'i' },
 { "debug",	0,	NULL,	'd' },
 { "withgl",	1,	NULL,	'g' },
 /*
@@ -1486,6 +1487,7 @@ static const char *usage_string =
 "      [-s | --nosound]        Do not access the soundcard\n"
 "      [-c | --nocdrom]        Do not access the CD-ROM\n"
 "      [-j | --nojoy]          Do not access the joystick\n"
+"      [-i | --intro]          Show Intro\n"
 "      [-g | --withgl] [x]     Use [x] instead of /usr/lib/libGL.so.1 for OpenGL\n"
 ;
          
@@ -1495,7 +1497,7 @@ int main(int argc, char *argv[])
 	int c;
 	
 	opterr = 0;
-	while ((c = getopt_long(argc, argv, "hvfwscdg:", getopt_long_options, NULL)) != -1) {
+	while ((c = getopt_long(argc, argv, "hvfwscdg:i", getopt_long_options, NULL)) != -1) {
 		switch(c) {
 			case 'h':
 				printf("%s", usage_string);
@@ -1518,6 +1520,9 @@ int main(int argc, char *argv[])
 			case 'j':
 				WantJoystick = 0;
 				break;			
+			case 'i':
+				WeWantAnIntro();
+				break;
 			case 'd': {
 				extern int DebuggingCommandsActive;
 				DebuggingCommandsActive = 1;

@@ -28,6 +28,7 @@ typedef struct GameDirectoryFile
 	time_t timestamp;
 } GameDirectoryFile;
 
+char *getFullPath(const char *filename);
 int SetGameDirectories(const char *local, const char *global);
 FILE *OpenGameFile(const char *filename, int mode, int type);
 int CloseGameFile(FILE *pfd);

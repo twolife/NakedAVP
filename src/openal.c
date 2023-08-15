@@ -1166,3 +1166,12 @@ int LoadWavFromFastFile(int soundNum, char * wavFileName)
 
 	return ok;
 }
+
+float PlatVolumeToGain(int volume)
+{
+       if(volume<0) volume = 0;
+       if(volume>127) volume = 127;
+       return vol_to_gain_table[volume];
+}
+
+

@@ -3,9 +3,9 @@ extern "C"
 {
 	#include "3dc.h"
 	#include "inline.h"
-	//#include "smacker.h"
+	#include "bink.h"
 	#include "avp_menus.h"
-    #include "avp_intro.h"
+	#include "avp_intro.h"
 	extern int NormalFrameTime;
 	extern unsigned char GotAnyKey;
 	extern int DebouncedGotAnyKey;
@@ -23,7 +23,6 @@ void Show_ARebellionGame(void);
 void Show_AvPLogo(void);
 extern void ShowSplashScreens(void);
 extern void Show_WinnerScreen(void);
-extern void PlayBinkedFMV(char *filenamePtr);
 extern void DrawMainMenusBackdrop(void);
 extern void FadedScreen(int alpha);
 
@@ -62,8 +61,7 @@ extern void PlayIntroSequence(void)
 	FlipBuffers();
 	ClearScreenToBlack();
 
-	//PlayBinkedFMV("FMVs/logos.bik");
-	//PlayFMV("FMVs/rebellion.smk");
+	PlayBinkedFMV("FMVs/logos.bik");
 
 	StartMenuMusic();
 	ResetFrameCounter();

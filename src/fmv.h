@@ -39,6 +39,4 @@ void UpdateAllFMVTextures(void);
 void ScanImagesForFMVs(void);
 void ReleaseAllFMVTextures(void);
 
-void PlayBinkedFMV(char *filenamePtr);
-
 #endif
